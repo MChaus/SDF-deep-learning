@@ -7,7 +7,7 @@ import zipfile
 
 from urllib.error import HTTPError    
 
-def load_class(filename: str) -> list:
+def load_classes(filename: str) -> list:
     ''' Load classes names from json.
     '''
     with open(filename) as file:
@@ -41,7 +41,7 @@ def extract_archives(folder: str):
 
 def main():
     dest_folder = os.path.join('.', 'data', 'ShapeNetCoreV2')
-    classes = load_class('classes.json')
+    classes = load_classes('classes.json')
     load_shape_net(classes, dest_folder)
     extract_archives(dest_folder)
 

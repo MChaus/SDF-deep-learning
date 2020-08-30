@@ -1,2 +1,3 @@
 venv
-
+data/ShapeNetCoreV2/*
+!data/ShapeNetCoreV2/.gitkeep

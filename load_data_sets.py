@@ -14,36 +14,25 @@ def load_classes(filename: str) -> list:
         classes = json.load(file)
     return classes["classes"]
 
-def load_shape_net(classes: list, dest_folder: str):
+def load_shape_net(classes: list):
     ''' Load specified shapenet classes.
     '''
-    prefix = 'http://shapenet.cs.stanford.edu/shapenet/obj-zip/'
+    prefix = 'http://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2/'
     for class_3d in classes:
         print('Loading {} class'.format(class_3d))
-        url = prefix + class_3d + '.zip'
-        try:
-            wget.download(url, dest_folder)
-            print('\nClass {} downloaded'.format(class_3d))
-        except HTTPError as err:
-            if err.code == 404:
-                print('Class {} not found'.format(class_3d))
-            else:
-                raise
-
-def extract_archives(folder: str):
-    ''' Extract archives into the folder.
-    '''
-    for archive in [f for f in os.listdir(folder) if f.endswith('.zip')]:
-        print('Extracting {} archive ...'.format(archive))
-        archive = os.path.join(folder, archive)
-        with zipfile.ZipFile(archive, 'r') as zip_ref:
-            zip_ref.extractall(folder)
+        url = prefix + class_3d
+        os.system(
+            "lftp -c 'mirror --parallel=100 " + url + "; exit'"
+            )
 
 def main():
-    dest_folder = os.path.join('.', 'data', 'ShapeNetCoreV2')
     classes = load_classes('classes.json')
-    load_shape_net(classes, dest_folder)
-    extract_archives(dest_folder)
+
+    dirname = os.path.dirname(__file__)
+    dest_folder = os.path.join(dirname, 'data', 'ShapeNetCoreV2')
+    os.chdir(dest_folder)
+    
+    load_shape_net(classes)
 
 if __name__ == '__main__':
     main()

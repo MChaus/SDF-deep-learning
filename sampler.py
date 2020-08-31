@@ -32,18 +32,18 @@ class MeshSampler:
         n1 = n2 = int(self.n_points / 2.1)
         n3 = self.n_points - n1 - n2
         all_points = (
-            self.sample_near_surface(n1, self.sigma1),
-            self.sample_near_surface(n2, self.sigma2),
-            self.sample_uniform(n3)
+            self._sample_near_surface(n1, self.sigma1),
+            self._sample_near_surface(n2, self.sigma2),
+            self._sample_uniform(n3)
         )
         self.sampled_points = np.concatenate(all_points, axis=0)
 
-    def sample_near_surface(self, n_points, sigma):
+    def _sample_near_surface(self, n_points, sigma):
         points, faces = trimesh.sample.sample_surface(self.mesh, count=n_points)
         noisy_points = self._add_noise(points, sigma)
         return noisy_points
 
-    def sample_uniform(self, n_points):
+    def _sample_uniform(self, n_points):
         low = - self.bounding_cube_dim / 2
         high = -low
         uniform_points = np.random.uniform(low, high, (n_points, 3))

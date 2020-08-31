@@ -18,7 +18,7 @@ class MeshSampler:
     Third set contains points distributed uniformly in the bounding cube.
     '''
 
-    def __init__(self, mesh, n_points=10000, sigma1=0.005**0.5, sigma2=0.005**0.5/10, bounding_cube_dim=2):
+    def __init__(self, mesh, n_points=50000, sigma1=0.005**0.5, sigma2=0.0005**0.5, bounding_cube_dim=2):
         self.mesh = mesh
         self.sigma1 = sigma1
         self.sigma2 = sigma2

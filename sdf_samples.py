@@ -36,6 +36,7 @@ class SDFSamples(torch.utils.data.Dataset):
         neg_tensor = self._remove_nans(torch.from_numpy(neg))
         
         if self.subsample is not None:
+            half = int(self.subsample / 2)
             pos_ids = (torch.rand(half) * pos_tensor.shape[0]).long()
             neg_ids = (torch.rand(half) * neg_tensor.shape[0]).long()
 

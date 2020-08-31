@@ -54,14 +54,23 @@ class MeshSampler:
         noisy_points = points + noise
         return noisy_points
 
-    def compute_sdf(self):
+    def compute_sdf(self, chunk_size=100):
         ''' Return SDF values for sampled points.
         '''
-        sdf = self.mesh.nearest.signed_distance(self.sampled_points)
+        # Process points in chunks in memory constrained environment
+        sdf_list = []
+        n = len(self.sampled_points)
+        gen_chunks = (
+            self.sampled_points[i:i + chunk_size] for i in range(0, n, chunk_size)
+            )
+        for points in gen_chunks:
+            sdf_list.append(self.mesh.nearest.signed_distance(points))
+        sdf = np.concatenate(sdf_list, axis = 0)
+
         sdf = sdf.reshape(-1, 1)
         sdf = -sdf  # trimesh inverts SDF
 
-        # Filter our nan values
+        # Filter out nan values
         mask = np.any(np.isnan(sdf), axis=1)
         points = self.sampled_points[~mask]
         sdf = sdf[~mask]

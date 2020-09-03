@@ -1,11 +1,14 @@
-#!/usr/bin/env python3
-# Implementation of the CVPR '19 paper "DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation" 
+# !/usr/bin/env python3
+# Implementation of the CVPR '19 paper "DeepSDF: Learning
+# Continuous Signed Distance Functions for Shape Representation."
 
 import torch.nn as nn
 import torch
 import torch.nn.functional as F
 
 class Decoder(nn.Module):
+    ''' DeepSDF NN implementation.
+    '''
     def __init__(
         self,
         latent_size,
@@ -20,9 +23,6 @@ class Decoder(nn.Module):
         latent_dropout=False,
     ):
         super(Decoder, self).__init__()
-
-        def make_sequence():
-            return []
 
         dims = [latent_size + 3] + dims + [1]
 

@@ -20,14 +20,14 @@ Right now this repository contains three folders and a couple scripts.
 `notebooks` directory contains experiments along with visualization. At the moment it has only one notebook with sampling visualization.
 Run notebooks after loading datasets, because they rely on specific data.
 
-Script `load_data.py` downloads class that are listed in the `classes.json`. File `classes.json` in its turn has codes of class from 
-[ShapeNetCore.v2](http://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2/) dataset. You can find corespondence between codes 
-and class normal names in ['shapenet_classes_list.txt'](shapenet_classes_list.txt). Right now this script only mantains classes from 
+Script `load_data.py` downloads classes that are listed in the `classes.json`. File `classes.json` in its turn has codes of class from 
+[ShapeNetCore.v2](http://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2/) dataset. You can find correspondence between codes 
+and class normal names in ['shapenet_classes_list.txt'](shapenet_classes_list.txt). Right now this script only maintains classes from 
 ShapeNetCore.v2. Other datasets like ABC are not available yet.
 
-Script `sample_points.py` samples points near surface of all objects it can find in `data/ShapeNetCoreV2` directory. 
+Script `sample_points.py` samples points near the surface of all objects it can find in the `data/ShapeNetCoreV2` directory. 
 
-Script `train.py` trains the model using preprocessed data from `data\SDFs` folder. Specification for the network are lilsted in `specs.json`.
+Script `train.py` trains the model using preprocessed data from `data\SDFs` folder. Specifications for the network are listed in `specs.json`.
 
 Script `reconstruct.py` calculates latent vector for given set of sampled points.
 
@@ -43,16 +43,16 @@ See [issue](https://github.com/mikedh/trimesh/issues/976) I opened on this topic
 
 [LearningRateSchedule](source/learning_rate.py) - implementation of learning rate decay.
 
-[SDFSamples](source/sdf_samples.py) - implements dataset of sampled points with SDF. EEach data sample represents a set of points for single object.
+[SDFSamples](source/sdf_samples.py) - implements dataset of sampled points with SDF. EEach data sample represents a set of points for a single object.
 Reads and returns points on demand.
 
-[DeepSDFTrainer](source/deep_sdf_trainer.py) - class that implements training process of the network. 
+[DeepSDFTrainer](source/deep_sdf_trainer.py) - class that implements the training process of the network. 
 
 [DeepSDFReconstructor](source/deep_sdf_reconstructor.py) - class that implements reconstruction of the latent vector for given set of sampled points.
 
 ## Usage
 
-This project was developed under Ubuntu 20.04 system. As environment manager I used Anaconda3. 
+This project was developed under Ubuntu 20.04 system. As an environment manager I used Anaconda3. 
 All the required packages you can find in [`requirements.txt`](requirements.txt).
 
 Check you have installed `lftp`. I used it for transfering dataset.
@@ -71,7 +71,7 @@ Sample points along with SDFs:
 ```
 $ python sample_points.py
 ```
-This may be rather time consuming routine.
+This may be a rather time consuming routine.
 
 And last one. Start training:
 ```

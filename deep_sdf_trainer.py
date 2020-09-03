@@ -8,7 +8,7 @@ from deep_sdf import Decoder
 from sdf_samples import SDFSamples
 from learning_rate import LearningRateSchedule
 
-class DeepSDFTrainer():
+class DeepSDFTrainer:
     '''
     Class for loading specs, training and saving DeepSDF NN.
 

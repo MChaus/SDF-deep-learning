@@ -17,6 +17,9 @@ Right now this repository contains three folders and a couple scripts.
 
 `source` directory contains all useful classes I implemented during my small investigation.
 
+`notebooks` directory contains experiments along with visualization. At the moment it has only one notebook with sampling visualization.
+Run notebooks after loading datasets, because they rely on specific data.
+
 Script `load_data.py` downloads class that are listed in the `classes.json`. File `classes.json` in its turn has codes of class from 
 [ShapeNetCore.v2](http://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2/) dataset. You can find corespondence between codes 
 and class normal names in ['shapenet_classes_list.txt'](shapenet_classes_list.txt). Right now this script only mantains classes from 

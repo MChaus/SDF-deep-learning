@@ -33,7 +33,7 @@ Script `reconstruct.py` calculates latent vector for given set of sampled points
 
 ## Implemented classes
 
-[MeshSampler](source/mesh_sampler.py) - class that samples points and calculates SDFs. This is my implementation of the code from here:
+[MeshSampler](source/mesh_sampler.py) - class that samples points and calculates SDFs. This is my implementation of the С++ code from here:
 https://github.com/facebookresearch/DeepSDF/blob/master/src/PreprocessMesh.cpp. All the defaults were taken 
 from that implementation as well. I implemented it in Python by means of trimesh library. Unfortunately due to the usage of rtrees for 
 saving vertices this approach may lead to consumption of all the memory and unauthorized halting. 
@@ -43,7 +43,7 @@ See [issue](https://github.com/mikedh/trimesh/issues/976) I opened on this topic
 
 [LearningRateSchedule](source/learning_rate.py) - implementation of learning rate decay.
 
-[SDFSamples](source/sdf_samples.py) - implements dataset of sampled points with SDF. EEach data sample represents a set of points for a single object.
+[SDFSamples](source/sdf_samples.py) - implements dataset of sampled points with SDF. Each data sample represents a set of points for a single object.
 Reads and returns points on demand.
 
 [DeepSDFTrainer](source/deep_sdf_trainer.py) - class that implements the training process of the network. 

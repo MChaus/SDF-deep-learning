@@ -1,11 +1,16 @@
 venv
 __pycache__/
 *.py[cod]
+.vscode
 
 data/*
 data/SDFs/*
 data/ShapeNetCoreV2/*
+training/*
+training/DeepSDF/*
 
 !data/SDFs
 !data/SDFs/.gitkeep
 !data/ShapeNetCoreV2/.gitkeep
+!training/DeepSDF
+!training/DeepSDF/.gitkeep

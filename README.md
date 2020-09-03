@@ -62,7 +62,7 @@ $ sudo apt-get update
 $ sudo apt-get install lftp
 ```
 
-Now load hapeNetCore.v2 class listed in `classes.json`:
+Now load ShapeNetCore.v2 class listed in `classes.json`:
 ```
 $ python load_data_sets.py  
 ```

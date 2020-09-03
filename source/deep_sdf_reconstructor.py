@@ -3,9 +3,9 @@
 import os
 import torch
 
-from learning_rate import LearningRateSchedule
-from sdf_samples import SDFSamples
-from deep_sdf import Decoder
+from .learning_rate import LearningRateSchedule
+from .sdf_samples import SDFSamples
+from .deep_sdf import Decoder
 
 class DeepSDFReconstructor:
 

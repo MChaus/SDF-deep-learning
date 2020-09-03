@@ -4,9 +4,9 @@ import os
 import json
 import torch
 
-from deep_sdf import Decoder
-from sdf_samples import SDFSamples
-from learning_rate import LearningRateSchedule
+from .deep_sdf import Decoder
+from .sdf_samples import SDFSamples
+from .learning_rate import LearningRateSchedule
 
 class DeepSDFTrainer:
     '''

@@ -9,7 +9,7 @@ proposed pretrained models that may give expressive representations without any 
 comparison of predicted shapes' quality.
 
 ## Repository organization
-Right now this repository contains three folders and a couple scripts. 
+Right now this repository contains four folders and a couple scripts. 
 
 `data` directory is created for containment of 3D object's datasets and calculated SDFs.
 

@@ -6,7 +6,7 @@ import numpy as np
 import trimesh
 import logging
 
-from sampler import MeshSampler
+from mesh_sampler import MeshSampler
 
 
 def get_models_path(pattern: str) -> list:

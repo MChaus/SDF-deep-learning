@@ -168,7 +168,7 @@ class DeepSDFTrainer:
             self._adjust_learning_rate(epoch)
             loss_log = []
 
-            for sdf_data, indices in self.sdf_loader:
+            for b_iter, (sdf_data, indices) in enumerate(self.sdf_loader):
                 # Stack all points in a 2D tensor 
                 sdf_data = sdf_data.reshape(-1, 4)
                 
@@ -191,7 +191,6 @@ class DeepSDFTrainer:
                 self.optimizer.zero_grad()
 
                 for i in range(self.batch_split):
-                    print('Start split ', i)
                     batch_vecs = self.lat_vecs(indices[i])
                     
                     input = torch.cat([batch_vecs, xyz[i]], dim=1)
@@ -214,7 +213,7 @@ class DeepSDFTrainer:
                     chunk_loss.backward()
                     batch_loss += chunk_loss.item()
                 
-                print("loss = {}".format(batch_loss))
+                print("Batch {}: loss = {}".format(b_iter, batch_loss))
                 loss_log.append(batch_loss)
 
                 self.optimizer.step()

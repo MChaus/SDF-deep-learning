@@ -36,8 +36,6 @@ Script `sample_points.py` samples points near the surface of all objects it can 
 
 Script `train.py` trains the model using preprocessed data from `data\SDFs` folder. Specifications for the network are listed in `specs.json`.
 
-Script `reconstruct.py` calculates latent vector for given set of sampled points.
-
 ## Implemented classes
 
 [MeshSampler](source/mesh_sampler.py) - class that samples points and calculates SDFs. This is my implementation of the С++ code from here:
@@ -86,7 +84,7 @@ $ python train.py
 ```
 
 ## TODO
-Unfortunately right now I didn't prepare any interesting experiments. I have this working code, but training and model comparisons are yet to be done.
+Right now I have tested light neural networks. More sophisticated models and tests are yet to be created.
 
 ## Interesting papers I found:
 

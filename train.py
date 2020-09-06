@@ -3,6 +3,7 @@
 import os
 import glob
 import json
+import argparse
 import numpy as np
 
 from source.deep_sdf_trainer import DeepSDFTrainer
@@ -19,7 +20,7 @@ def get_objects_dirs() -> list:
         dirs.append(object_dir)
     return dirs
 
-def create_split(obj_dirs, test_size=0.2, split_path='training'):
+def create_split(obj_dirs, split_path, test_size=0.2):
     N = len(obj_dirs)
     n_test = int(N * test_size)
     indices = np.random.permutation(N)
@@ -37,12 +38,43 @@ def create_split(obj_dirs, test_size=0.2, split_path='training'):
     
     return train, test
 
-def main():
+def get_default_dir():
+    n = 0
+    while True:
+        dir_path = os.path.join('training', 'DeepSDF', 'train_' +  str(n))
+        if os.path.exists(dir_path):
+            n += 1
+            continue
+        return 'train_' +  str(n)
+
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    default_dir = get_default_dir()
+    parser.add_argument(
+        '--dir',
+        type=str,
+        default=default_dir,
+        help='folder to save results'
+        )
+    parser.add_argument(
+        '--specs',
+        type=str,
+        default='specs.json',
+        help='DeepSDF neural network specs'
+        )
+    args = parser.parse_args()
+    return args
+
+def main(args):
     obj_dirs = get_objects_dirs()
-    train, test = create_split(obj_dirs)
-    results_path = os.path.join("training", "DeepSDF")
-    decoder_trainer = DeepSDFTrainer('specs.json', train, results_path)
+    results_dir = args.dir
+    specs_path = args.specs
+    results_path = os.path.join('training', 'DeepSDF', results_dir)
+    os.mkdir(results_path)
+    train, test = create_split(obj_dirs, split_path=results_path)
+    decoder_trainer = DeepSDFTrainer(specs_path, train, results_path)
     decoder_trainer.train()
 
 if __name__ == '__main__':
-    main()
+    args = parse_arguments()
+    main(args)

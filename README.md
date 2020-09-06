@@ -1,4 +1,5 @@
 # NeoRender_test_task
+![Image of dynamics](images/cover.png)
 ## Short description
 This repository contains code I wrote for better understanding of 3D reconstruction using Deep Learning and SDFs.
 During my research I found several papers directly related to the problem. Almost all of them cited CVPR '19 paper 

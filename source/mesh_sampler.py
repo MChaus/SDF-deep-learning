@@ -12,13 +12,18 @@ class MeshSampler:
     Class that performs sampling from the given mesh.
 
     Performs sampling 3 times.
-    Two bigger sets are formed after sampling near the mesh surface performing 
-    Gaussian noise on the points from the mesh faces. These sets make up 95% 
+    Two bigger sets are formed after sampling near the mesh surface performing
+    Gaussian noise on the points from the mesh faces. These sets make up 95%
     points.
     Third set contains points distributed uniformly in the bounding cube.
     '''
 
-    def __init__(self, mesh, n_points=50000, sigma1=0.005**0.5, sigma2=0.0005**0.5, bounding_cube_dim=2):
+    def __init__(self, 
+                 mesh, 
+                 n_points=500000, 
+                 sigma1=0.005**0.5, 
+                 sigma2=0.0005**0.5, 
+                 bounding_cube_dim=2):
         self.mesh = mesh
         self.sigma1 = sigma1
         self.sigma2 = sigma2

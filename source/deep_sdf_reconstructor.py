@@ -12,10 +12,10 @@ class DeepSDFReconstructor:
     def __init__(
         self,
         decoder,
-        num_iterations,
         latent_size,
-        std,
-        clamp_dist,
+        std=0.01,
+        clamp_dist=0.1,
+        num_iterations=2000,
         num_samples=8000,
         lr=5e-4,
         l2reg=True,

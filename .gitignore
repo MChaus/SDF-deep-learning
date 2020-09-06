@@ -9,10 +9,17 @@ data/ShapeNetCoreV2/*
 training/*
 training/DeepSDF/*
 notebooks/*
+notebooks/models/*
 
 !data/SDFs
 !data/SDFs/.gitkeep
 !data/ShapeNetCoreV2/.gitkeep
+
 !training/DeepSDF
 !training/DeepSDF/.gitkeep
+
 !notebooks/sampling_visualization.ipynb
+!notebooks/very_narrow_net_reconstruction.ipynb
+!notebooks/narrow_net_reconstruction.ipynb
+!notebooks/models
+!notebooks/models/.gitkeep

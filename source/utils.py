@@ -11,6 +11,7 @@ from .deep_sdf import Decoder
 def marching_cubes(
     decoder,
     latent_vec,
+    level =0.0,
     N=256,
     max_batch=32 ** 3
 ):
@@ -64,7 +65,7 @@ def marching_cubes(
     numpy_3d_sdf_tensor = pytorch_3d_sdf_tensor.numpy()    
 
     verts, faces, normals, values = skimage.measure.marching_cubes(
-        numpy_3d_sdf_tensor, level=0.0, spacing=[voxel_size] * 3
+        numpy_3d_sdf_tensor, level=level, spacing=[voxel_size] * 3
     )
     print('\nvertices are ready')
 

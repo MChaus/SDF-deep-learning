@@ -63,6 +63,7 @@ class DeepSDFTrainer:
 
     def _init_learning_scedules(self):
         self.lr_schedules = []
+        self.init_epoch = 0
         for schedule in self.specs_schedule:
             initial = schedule['Initial']
             interval = schedule['Interval']
@@ -147,7 +148,6 @@ class DeepSDFTrainer:
             file_path
         )
      
-
     def save_latent_vectors(self, epoch):
         file_path = os.path.join(self.results_path, 'latent_vecs_{}.pt'.format(epoch))
         all_latents = self.lat_vecs.state_dict()
@@ -159,9 +159,22 @@ class DeepSDFTrainer:
             file_path
         )
 
+    def load_decoder(self, decoder_path: str):
+        data = torch.load(decoder_path)
+        self.decoder.load_state_dict(data["model_state_dict"])
+
+    def load_optimizer(self, optimizer_path: str):
+        data = torch.load(optimizer_path)
+        self.optimizer.load_state_dict(data['optimizer_state_dict'])
+        self.init_epoch = data['epoch'] + 1
+
+    def load_latent_vec(self, latent_path:str):
+        data = torch.load(latent_path)
+        self.lat_vecs.load_state_dict(data['latent_codes'])
+
     def train(self):
         loss_l1 = torch.nn.L1Loss(reduction='sum')
-        for epoch in range(self.num_epochs):
+        for epoch in range(self.init_epoch, self.num_epochs):
             print('Epoch {}'.format(epoch))
 
             self.decoder.train()

@@ -60,6 +60,7 @@ class DeepSDFTrainer:
 
         self.specs_schedule = self.specs['LearningRateSchedule']
         self.snapshot_frequency = self.specs['SnapshotFrequency']
+        self.data_loader_threads = self.specs['DataLoaderThreads']
 
     def _init_learning_scedules(self):
         self.lr_schedules = []
@@ -78,6 +79,7 @@ class DeepSDFTrainer:
             self.sdf_dataset,
             batch_size=self.batch_size,
             shuffle=True,
+            num_workers=self.data_loader_threads,
             drop_last=True,
         )
         self.dataset_len = len(self.sdf_dataset)

@@ -22,8 +22,8 @@ Right now this repository contains four folders and a couple scripts.
 
 `notebooks` directory contains experiments along with visualization. At the moment it has three notebooks: 
   1. sampling visualization - [sampling_visualization.ipynb](notebooks/sampling_visualization.ipynb).
-  2. vizualization of very light DeepSDF network with size of latent vectors 16 - [very_narrow_net_reconstruction.ipynb](notebooks/very_narrow_net_reconstruction.ipynb)
-  3. vizualization of light DeepSDF network with size of latent vectors 32 - [narrow_net_reconstruction.ipynb](notebooks/narrow_net_reconstruction.ipynb)
+  2. vizualization of very light DeepSDF network with size of latent vectors 16 - [deep_sdf_32.ipynb](notebooks/deep_sdf_32.ipynb)
+  3. vizualization of light DeepSDF network with size of latent vectors 32 - [deep_sdf_64.ipynb](notebooks/deep_sdf_64.ipynb)
   
 Run notebooks after loading datasets, because they rely on specific data.
 

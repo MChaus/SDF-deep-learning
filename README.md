@@ -1,4 +1,4 @@
-# NeoRender_test_task
+# DeepSDF
 ![Image of dynamics](images/cover.png)
 
 ![Image of plates](images/plates.png)
